@@ -1,0 +1,251 @@
+:root {
+  --primary: #00FFC6;
+  --accent: #29ff7a;
+  --danger: #FF4D4D;
+  --dark: #0D0D0D;
+  --glass: rgba(0, 255, 198, 0.05);
+  --border: rgba(0, 255, 198, 0.15);
+  --text-glow: 0 0 10px var(--primary);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a0a0a, #1c1c1c);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  width: 96%;
+  max-width: 1300px;
+  padding: 40px;
+  background: var(--glass);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 255, 198, 0.15);
+  backdrop-filter: blur(16px);
+  text-align: center;
+}
+
+/* Header */
+#site-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: var(--text-glow);
+}
+
+#leave-btn:hover {
+  background-color: var(--danger);
+  box-shadow: 0 0 14px var(--danger);
+  transform: scale(1.1);
+}
+
+/* Join UI */
+#join-section {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+#username-input,
+#room-input {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  font-size: 16px;
+  width: 220px;
+  backdrop-filter: blur(8px);
+}
+#create-btn,
+#join-btn {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: #0D0D0D;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--primary);
+  transition: all 0.3s ease-in-out;
+}
+
+#join-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--primary);
+}
+
+/* Video Containers */
+.video-containers {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--glass);
+  box-shadow: 0 0 20px rgba(0, 255, 198, 0.12);
+  aspect-ratio: 16 / 9;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-containers:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 24px rgba(0, 255, 198, 0.2);
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: black;
+  display: block;
+}
+
+/* Fallback label for no stream */
+.video-containers.no-stream::before {
+  content: "No Video";
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Name Label */
+.user-label {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--accent);
+  z-index: 2;
+}
+
+/* Remote streams grid */
+#user-streams {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Responsive grid for mobile */
+@media (max-width: 600px) {
+  #user-streams {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Control Panel */
+#footer {
+  display: none;
+  justify-content: center;
+  gap: 32px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 40px;
+  background: var(--glass);
+  box-shadow: 0 0 20px rgba(0, 255, 198, 0.15);
+  backdrop-filter: blur(12px);
+  flex-wrap: wrap;
+}
+
+.icon-wrapper {
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.control-icon {
+  width: 34px;
+  height: 34px;
+  padding: 14px;
+  background: #111;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 255, 198, 0.1);
+}
+
+.control-icon:hover {
+  background: var(--accent);
+  transform: scale(1.15);
+  box-shadow: 0 0 18px var(--accent);
+}
+
+.control-icon.disabled {
+  background: var(--danger);
+  opacity: 0.8;
+  box-shadow: 0 0 12px var(--danger);
+}
+
+/* Show footer when call is active */
+.call-active #footer {
+  display: flex;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* Join Request Popup */
+#popup-container {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#popup {
+  background: #1a1a1a;
+  padding: 30px 40px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 0 20px var(--primary);
+  text-align: center;
+}
+
+#popup-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+#popup-actions button {
+  padding: 10px 20px;
+  margin: 0 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--primary);
+  color: #0D0D0D;
+}
+
+#popup-actions button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 14px var(--primary);
+}

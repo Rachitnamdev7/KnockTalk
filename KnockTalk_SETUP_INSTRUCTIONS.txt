@@ -1,0 +1,41 @@
+📘 KnockTalk – Setup Instructions (Mandatory Changes Only)
+
+
+
+1.  Change Local IP Address
+
+File: public/script.js  
+Line: ~7
+
+```js
+const socket = io("http://192.168.X.X:3000"); // ← Replace with your local IP
+```
+
+Change `192.168.X.X` to your own local IP address.
+
+---
+
+2. 🔧 Start Server
+
+File: server.js  
+Run the server using:
+
+```bash
+node server.js
+```
+
+Ensure `express`, `http`, and `socket.io` are installed. If not, install them using:
+
+```bash
+npm install express socket.io
+```
+
+---
+
+4. Done!
+
+After making the above change and starting the server, open your browser and go to:
+
+http://localhost:3000
+
+Use two tabs or devices to test video calling.

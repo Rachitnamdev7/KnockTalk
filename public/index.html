@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KnockTalk</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <main>
+    <h1 id="site-title">Welcome!</h1>
+
+    <div id="join-section">
+      <input type="text" id="username-input" placeholder="Enter your name" />
+      <input type="text" id="room-input" placeholder="Enter room code" />
+      <button id="create-btn">Create Room</button>
+      <button id="join-btn">Join Call</button>
+    </div>
+
+    <div id="local-video-container" class="video-containers"></div>
+    <div id="user-streams"></div>
+
+    <div id="footer">
+      <div class="icon-wrapper">
+        <img class="control-icon" id="camera-btn" src="assets/video.svg" title="Toggle Camera" />
+        <p>Camera</p>
+      </div>
+      <div class="icon-wrapper">
+        <img class="control-icon" id="mic-btn" src="assets/microphone.svg" title="Toggle Mic" />
+        <p>Mic</p>
+      </div>
+      <div class="icon-wrapper">
+        <img class="control-icon" id="leave-btn" src="assets/leave.svg" title="Leave Call" />
+        <p>Leave</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Join Request Popup -->
+  <div id="popup-container" class="hidden">
+    <div id="popup">
+      <p id="popup-message"></p>
+      <div id="popup-actions">
+        <button id="accept-btn">Accept</button>
+        <button id="reject-btn">Reject</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
